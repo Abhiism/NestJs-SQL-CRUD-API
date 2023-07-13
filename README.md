@@ -58,6 +58,40 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## Base URL
+```bash
+baseURL=http://localhost:3000/api
+```
+## Endpoints of user Module
+```bash
+1. baseURL/userdata/findall
+   GET Api
+   retrive all the data of Users
+
+2. baseURL/userdata/get_id=:id
+   params = id (user id)
+   GET APi
+   retrieve data based on id
+
+3. baseURL/userdata/get_order_limit_:no
+   params = no (limit number)
+   GET APi
+   retrieve user data based on limit
+
+4. baseURL/userdata/Postobject
+   POST api
+   to post user data from UI
+
+5. baseURL/userdata/delete_id_no=:id
+   params = id (user id)
+   POST api
+   to delete User data based on id
+
+6. baseURL/userdata/get_firstname_lastname
+   GET api
+   to get first and last name of all users only
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
