@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
@@ -14,6 +14,44 @@ export class UsersService {
 
   findAll(): Promise<User[]> {
     return this.usersRepository.find();
+  }
+
+  get_first_last_col():Promise<User[]>
+  {
+     return this.usersRepository.find({
+      select: {
+        firstName: true,
+        lastName:true
+        
+    },
+     })
+  }
+  get_id(id:number):Promise<User[]>
+  {
+     return this.usersRepository.find({
+      where: {
+        id: id,
+      },
+     })
+     
+  }
+  get_all(){
+    return this.usersRepository.find({
+      order: {
+         
+          id: "ASC",
+      },
+  })
+  }
+
+  get_limit(no:number){
+    return this.usersRepository.find({
+      take:no,
+      order:{
+        id: "ASC",
+      }
+    },
+  )
   }
 
 //   findOne(id: number): Promise<User | null> {
